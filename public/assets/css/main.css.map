@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.css","sourcesContent":[]}
+{"version":3,"sources":["core/_reset.scss","layout/_page.scss"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,SAAS;EACT,UAAU,EAAA;;ACHZ;EACE,uBAAuB;EACvB,WAAW;EACX,aAAa,EAAA;;AAGf;EACE,uBAAuB;EACvB,WAAW;EACX,aAAa,EAAA","file":"main.css","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n",".shows {\n  border: solid 1px black;\n  width: 40vw;\n  height: 100vh;\n}\n\n.favorites {\n  border: 1px solid black;\n  width: 60vw;\n  height: 100vh;\n}\n"]}
