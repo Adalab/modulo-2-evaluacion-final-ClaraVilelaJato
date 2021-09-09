@@ -11,7 +11,11 @@
 
   <body>
     <div class="page">
-      <include src="./partials/header.html" title="Otra página del starter kit"></include>
+      <header class="page__header">
+        <img src="./assets/images/logo-adalab.png" alt="Adalab">
+        <h1>Otra página del starter kit</h1>
+      </header>
+
       <main>
         <p>
           Esta es otra segunda página del Starter kit. Mira el fichero
@@ -19,7 +23,14 @@
           que te ha traído hasta aquí.
         </p>
       </main>
-      <include src="./partials/footer.html"></include>
+      <footer class="page__footer">
+        <small>
+          &copy; Todos los derechos reservados
+          <a class="link__adalab" href="https://adalab.es">Adalab</a>
+
+        </small>
+      </footer>
+
     </div>
     <script src="./assets/js/main.js"></script>
   </body>
