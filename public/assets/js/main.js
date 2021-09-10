@@ -41,6 +41,17 @@ function handleShows(ev) {
     return fav.id === pickedShow;
   });
   console.log(favoritesFound);
+  if (favoritesFound === -1) {
+    // añado al array de favoritos
+    favorites.push(pickedShow);
+  } else {
+    // si el findIndex me ha devuelto un número mayor o igual a 0 es que sí está en el array de favoritos
+    // quiero sacarlo de array de favoritos
+    // para utilizar splice necesito el índice del elemento que quiero borrar
+    // y quiero borrar un solo elemento por eso colocamos 1
+    favorites.splice(favoritesFound, 1);
+  }
+  paintShows();
 }
 
 function listenShows() {
