@@ -9,11 +9,12 @@
   </head>
 
   <body>
-    
+    <header class="page__header">
+      <h1 class="header__title">Buscador de series</h1>
+    </header>
 
     <main class="main_page">
-      <h1>Buscador de series</h1>
-      <form action="input" class="js-form">
+      <form action="input" class="form js-form">
         <input
           class="search__input js-searchinput"
           type="text"
@@ -21,22 +22,15 @@
           id="search"
           placeholder="Escribe una serie"
         />
-        <button value="Search">Search</button>
+        <button value="Search" class="button js-search-btn">Search</button>
       </form>
-      <h3>Mis series favoritas</h3>
-      <div class="shows">
-        <ul class="shows__list js-shows-container">
-          <!-- Aquí empieza el código que vamos a generar desde JS-->
-          <li class="show">
-            <div class="show__colors">
-              <div class="show__color"></div>
-              <div class="show__color"></div>
-              <div class="show__color"></div>
-              <div class="show__color"></div>
-            </div>
-          </li>
-          <!-- Aquí acaba el código que vamos a generar desde JS-->
-        </ul>
+      <div class="main__container">
+        <div class="favorites">
+          <h2 class="favorites__fav-title">Mis series favoritas</h2>
+          <ul class="main__list-favorite"></ul>
+          <button value="Reset" class="reset__btn">Reset</button>
+        </div>
+        <ul class="main__list js-main-list"></ul>
       </div>
     </main>
 

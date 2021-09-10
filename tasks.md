@@ -1,0 +1,23 @@
+- [x] Diagrama de flujo (esquema)
+- [] Hacer la estructura del HTML, css minimo para trabajar
+- [] Pintar una serie
+  - [] Seleccionar los elementos del HTML donde voy a pintar la serie
+  - [] Hacer peticion al servidor FETCH
+  - [] Parsear los datos del servidor .json()
+  - [] guardar en una variable global y
+  - [] pintar en el HTML los datos
+  - [] ponerlo bonito
+- [] Pintar muchas series
+- [] Seleccionar series favoritas
+  - [] Escuchar evento sobre CLICK sobre las series
+  - [] Crear una funcion manejadora del evento
+  - [] Identificar la serie clicada
+  - [] Añadir a un array de favorito la serie clicada
+  - [] añadir o quitar la clase en el HTML de las series clicadas
+- [] Localstorage
+- [] Filtrar por nombre
+  - [] Definir el input del buscador
+  - [] Escuchar un evento sobre el input,
+  - [] Recoger el value del input
+  - [] filtrar
+  - [] pintar html los datos filtrados
