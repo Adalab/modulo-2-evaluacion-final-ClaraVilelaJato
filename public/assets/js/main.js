@@ -7,6 +7,7 @@ const reset = document.querySelector('.reset__btn');
 const resultsContainer = document.querySelector('.js-list-results'); //selecciono el elem. de html donde pintaré los resultados
 
 let apiDataShows = []; //array donde almaceno resultados
+let favorites = [];
 
 //Función para hacer petición al servidor
 
@@ -27,20 +28,47 @@ function handleSearch(ev) {
 //Añadimos evento que desencadena la funcion fetch al pulsar el boton, nos traemos los datos del api
 searchButton.addEventListener('click', handleSearch);
 
+//Esta función es la encargada de manejar el evento click sobre cada uno de los li
+function handleShows(ev) {
+  ev.currentTarget.id;
+  console.log(ev.currentTarget);
+  const pickedShow = ev.currentTarget.id;
+  const objectClickedShow = apiDataShows.find((serie) => {
+    console.log(serie.show.id);
+    return serie.show.id === parseInt(pickedShow);
+  });
+  const favoritesFound = favorites.findIndex((fav) => {
+    return fav.id === pickedShow;
+  });
+  console.log(favoritesFound);
+}
+
+function listenShows() {
+  const showList = document.querySelectorAll('.js-picked'); //le doy clase a los li que cree con la funcion paint
+  for (const show of showList) {
+    show.addEventListener('click', handleShows);
+  }
+}
+
+//esta funcion la incluimos en la funcion fecth
 function paintShows() {
   let html = '';
   for (const eachSerie of apiDataShows) {
     const oneSerie = eachSerie.show;
-    console.log(oneSerie.id);
     let image = '';
     if (oneSerie.image === null) {
       image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       image = oneSerie.image.medium;
     }
-    html += `<li id="${oneSerie.id}" class="serie__box"><img src="${image}" alt="${oneSerie.name}"><h3 class="serie__name">${oneSerie.name}</h3></li>`;
+    html += `<li id="${oneSerie.id}" class="serie__box js-picked">`;
+    html += `<div class="border-show">`;
+    html += `<img src="${image}" alt="${oneSerie.name}">`;
+    html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
+    html += `</div>`;
   }
   resultsContainer.innerHTML = html;
+  listenShows();
 }
 
 //# sourceMappingURL=main.js.map

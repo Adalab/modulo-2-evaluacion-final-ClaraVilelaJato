@@ -101,4 +101,8 @@ body {
   font-family: 'Antonio', sans-serif;
   padding: 5px; }
 
+.fav-picked .border-show {
+  border-color: whitesmoke;
+  margin-bottom: 1rem; }
+
 /*# sourceMappingURL=main.css.map */

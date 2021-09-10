@@ -9,9 +9,9 @@
   - [x] ponerlo bonito
 - [x] Pintar muchas series
 - [] Seleccionar series favoritas
-  - [] Escuchar evento sobre CLICK sobre las series
-  - [] Crear una funcion manejadora del evento
-  - [] Identificar la serie clicada
+  - [x] Escuchar evento sobre CLICK sobre las series
+  - [x] Crear una funcion manejadora del evento
+  - [x] Identificar la serie clicada
   - [] Añadir a un array de favorito la serie clicada
   - [] añadir o quitar la clase en el HTML de las series clicadas
 - [] Localstorage
