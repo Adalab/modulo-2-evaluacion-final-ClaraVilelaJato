@@ -1,13 +1,13 @@
 - [x] Diagrama de flujo (esquema)
 - [x] Hacer la estructura del HTML, css minimo para trabajar
 - [] Pintar una serie
-  - [] Seleccionar los elementos del HTML donde voy a pintar la serie
+  - [x] Seleccionar los elementos del HTML donde voy a pintar la serie
   - [x] Hacer peticion al servidor FETCH
-  - [] Parsear los datos del servidor .json()
+  - [x] Parsear los datos del servidor .json()
   - [] guardar en una variable global y
-  - [] pintar en el HTML los datos
+  - [x] pintar en el HTML los datos
   - [] ponerlo bonito
-- [] Pintar muchas series
+- [x] Pintar muchas series
 - [] Seleccionar series favoritas
   - [] Escuchar evento sobre CLICK sobre las series
   - [] Crear una funcion manejadora del evento
