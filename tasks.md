@@ -1,8 +1,8 @@
 - [x] Diagrama de flujo (esquema)
-- [] Hacer la estructura del HTML, css minimo para trabajar
+- [x] Hacer la estructura del HTML, css minimo para trabajar
 - [] Pintar una serie
   - [] Seleccionar los elementos del HTML donde voy a pintar la serie
-  - [] Hacer peticion al servidor FETCH
+  - [x] Hacer peticion al servidor FETCH
   - [] Parsear los datos del servidor .json()
   - [] guardar en una variable global y
   - [] pintar en el HTML los datos
