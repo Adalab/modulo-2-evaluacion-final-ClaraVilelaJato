@@ -38,7 +38,7 @@ function paintShows() {
     } else {
       image = oneSerie.image.medium;
     }
-    html += `<li id="${oneSerie.id}" class="serie__list--item js-favorite"><img src="${image}" alt="${oneSerie.name}"><h3 class="item__name">${oneSerie.name}</h3></li>`;
+    html += `<li id="${oneSerie.id}" class="serie__box"><img src="${image}" alt="${oneSerie.name}"><h3 class="serie__name">${oneSerie.name}</h3></li>`;
   }
   resultsContainer.innerHTML = html;
 }

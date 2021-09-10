@@ -9,6 +9,9 @@
 
 .header__title {
   margin-top: 30px;
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
   color: #f3edec;
   text-shadow: 0px 1px rgba(245, 245, 245, 0.308); }
 
@@ -52,7 +55,7 @@ body {
 .favorites {
   width: 30%;
   height: 100vh;
-  margin: 30px 0 80px 30px;
+  margin: 30px 0 80px 20px;
   background-color: white;
   text-align: center;
   padding: 20px 10px 20px 10px;
@@ -60,7 +63,9 @@ body {
   font-size: 20px; }
   .favorites__fav-title {
     color: #f81707;
-    text-shadow: 0px 1px gray; }
+    font-family: 'Antonio', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5 px; }
 
 .main__list {
   width: 70%;
@@ -80,5 +85,20 @@ body {
   .reset__btn:hover {
     box-shadow: 1px 1px 1px gray;
     transform: scale(1.1); }
+
+.serie__box {
+  list-style: none;
+  padding: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 5px;
+  margin-left: -5px; }
+
+.serie__name {
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-family: 'Antonio', sans-serif;
+  padding: 5px; }
 
 /*# sourceMappingURL=main.css.map */
