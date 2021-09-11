@@ -5,7 +5,7 @@ const inputShow = document.querySelector('.js-searchinput');
 const searchButton = document.querySelector('.js-search-btn');
 const reset = document.querySelector('.reset__btn');
 const resultsContainer = document.querySelector('.js-list-results'); //selecciono el elem. de html donde pintaré los resultados
-
+const paintedFavs = document.querySelector('.js-favs');
 let apiDataShows = []; //array donde almaceno resultados
 
 let favorites = [];
@@ -52,6 +52,7 @@ function handleShows(ev) {
   }
   console.log(favorites);
   paintShows();
+  paintFavs();
 }
 
 function listenShows() {
@@ -61,18 +62,38 @@ function listenShows() {
   }
 }
 
+function isFavorite(oneSerie) {
+  const favoritesFind = favorites.find((fav) => {
+    return fav.show.id === oneSerie.id;
+  });
+  if (favoritesFind === undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//funcion para pintar los favoritos
+
 //esta funcion la incluimos en la funcion fecth
 function paintShows() {
   let html = '';
+  let favClass = '';
   for (const eachSerie of apiDataShows) {
     const oneSerie = eachSerie.show;
+    const isFav = isFavorite(oneSerie);
+    if (isFav) {
+      favClass = 'js-favorite';
+    } else {
+      favClass = '';
+    }
     let image = '';
     if (oneSerie.image === null) {
       image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       image = oneSerie.image.medium;
     }
-    html += `<li id="${oneSerie.id}" class="serie__box js-picked">`;
+    html += `<li id="${oneSerie.id}" class="serie__box js-picked ${favClass}">`;
     html += `<div class="border-show">`;
     html += `<img src="${image}" alt="${oneSerie.name}">`;
     html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
@@ -80,4 +101,24 @@ function paintShows() {
   }
   resultsContainer.innerHTML = html;
   listenShows();
+}
+
+function paintFavs() {
+  let html = '';
+  paintedFavs.innerHTML = '';
+  for (let favorite of favorites) {
+    const favoriteShow = favorite.show;
+    let image = '';
+    if (favoriteShow.image === null) {
+      image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+    } else {
+      image = favoriteShow.image.medium;
+    }
+    html += `<li id="${favoriteShow.id}" class="serie__box js-picked">`;
+    html += `<div class="border-show">`;
+    html += `<img src="${image}" alt="${favoriteShow.name}">`;
+    html += `<h3 class="serie__name">${favoriteShow.name}</h3></li>`;
+    html += `</div>`;
+  }
+  paintedFavs.innerHTML = html;
 }

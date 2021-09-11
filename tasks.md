@@ -13,7 +13,7 @@
   - [x] Crear una funcion manejadora del evento
   - [x] Identificar la serie clicada
   - [x] Añadir a un array de favorito la serie clicada
-  - [] añadir o quitar la clase en el HTML de las series clicadas
+  - [x] Pintar las series favoritas y que se despinten al volver a clicar
 - [] Localstorage
 - [] Filtrar por nombre
   - [] Definir el input del buscador
