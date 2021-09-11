@@ -10,6 +10,13 @@ let apiDataShows = []; //array donde almaceno resultados
 
 let favorites = [];
 
+function setInLocalStorage() {
+  // stringify me permite transformar a string el array de favorites
+  const stringShows = JSON.stringify(favorites);
+  //añadimos  al localStorage  los datos convertidos en string previamente
+  localStorage.setItem('favorites', stringShows);
+}
+
 //Función para hacer petición al servidor
 
 function fetchToApi() {
@@ -20,15 +27,37 @@ function fetchToApi() {
       apiDataShows = data;
     });
   paintShows();
-  console.log(apiDataShows);
+  setInLocalStorage();
+}
+
+function getLocalStorage() {
+  // obtenermos lo que hay en el LS
+  const localStorageLoaded = localStorage.getItem('favorites');
+  // siempre que cojo datos del local storage tengo que comprobar si son válidos
+  // es decir si es la primera vez que entro en la página
+  if (localStorageLoaded === null) {
+    // no tengo datos en el local storage, así que llamo al API
+    fetchToApi();
+  } else {
+    // sí tengo datos en el local storage, así lo parseo a un array y
+    const arrayFavorites = JSON.parse(localStorageLoaded);
+    // lo guardo en la variable global de palettes
+    favorites = arrayFavorites;
+    // cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y a escuchar eventos
+    paintFavs();
+  }
 }
 
 function handleSearch(ev) {
   ev.preventDefault();
   fetchToApi();
 }
+
 //Añadimos evento que desencadena la funcion fetch al pulsar el boton, nos traemos los datos del api
 searchButton.addEventListener('click', handleSearch);
+
+// 1- start app -- Cuando carga la pagina
+getLocalStorage();
 
 //Esta función es la encargada de manejar el evento click sobre cada uno de los li
 function handleShows(ev) {
@@ -62,38 +91,20 @@ function listenShows() {
   }
 }
 
-function isFavorite(oneSerie) {
-  const favoritesFind = favorites.find((fav) => {
-    return fav.show.id === oneSerie.id;
-  });
-  if (favoritesFind === undefined) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
 //funcion para pintar los favoritos
 
 //esta funcion la incluimos en la funcion fecth
 function paintShows() {
   let html = '';
-  let favClass = '';
   for (const eachSerie of apiDataShows) {
     const oneSerie = eachSerie.show;
-    const isFav = isFavorite(oneSerie);
-    if (isFav) {
-      favClass = 'js-favorite';
-    } else {
-      favClass = '';
-    }
     let image = '';
     if (oneSerie.image === null) {
       image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       image = oneSerie.image.medium;
     }
-    html += `<li id="${oneSerie.id}" class="serie__box js-picked ${favClass}">`;
+    html += `<li id="${oneSerie.id}" class="serie__box js-picked">`;
     html += `<div class="border-show">`;
     html += `<img src="${image}" alt="${oneSerie.name}">`;
     html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
@@ -114,11 +125,9 @@ function paintFavs() {
     } else {
       image = favoriteShow.image.medium;
     }
-    html += `<li id="${favoriteShow.id}" class="serie__box js-picked">`;
-    html += `<div class="border-show">`;
-    html += `<img src="${image}" alt="${favoriteShow.name}">`;
-    html += `<h3 class="serie__name">${favoriteShow.name}</h3></li>`;
-    html += `</div>`;
+    html += `<li id="${favoriteShow.id}" class="fav__card">`;
+    html += `<img class="fav__image" src="${image}" alt="${favoriteShow.name}">`;
+    html += `<h3 class="fav__name">${favoriteShow.name}</h3></li>`;
   }
   paintedFavs.innerHTML = html;
 }

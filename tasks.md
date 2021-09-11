@@ -8,7 +8,7 @@
   - [x] pintar en el HTML los datos
   - [x] ponerlo bonito
 - [x] Pintar muchas series
-- [] Seleccionar series favoritas
+- [x] Seleccionar series favoritas
   - [x] Escuchar evento sobre CLICK sobre las series
   - [x] Crear una funcion manejadora del evento
   - [x] Identificar la serie clicada
