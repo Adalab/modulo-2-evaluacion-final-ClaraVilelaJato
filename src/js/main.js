@@ -7,6 +7,7 @@ const reset = document.querySelector('.reset__btn');
 const resultsContainer = document.querySelector('.js-list-results'); //selecciono el elem. de html donde pintaré los resultados
 
 let apiDataShows = []; //array donde almaceno resultados
+
 let favorites = [];
 
 //Función para hacer petición al servidor
@@ -19,6 +20,7 @@ function fetchToApi() {
       apiDataShows = data;
     });
   paintShows();
+  console.log(apiDataShows);
 }
 
 function handleSearch(ev) {
@@ -30,20 +32,17 @@ searchButton.addEventListener('click', handleSearch);
 
 //Esta función es la encargada de manejar el evento click sobre cada uno de los li
 function handleShows(ev) {
-  ev.currentTarget.id;
-  console.log(ev.currentTarget);
-  const pickedShow = ev.currentTarget.id;
-  const objectClickedShow = apiDataShows.find((serie) => {
-    console.log(serie.show.id);
-    return serie.show.id === parseInt(pickedShow);
+  const pickedShow = parseInt(ev.currentTarget.id);
+  const objectClickedShow = apiDataShows.find((show) => {
+    return show.show.id === pickedShow;
   });
   const favoritesFound = favorites.findIndex((fav) => {
-    return fav.id === pickedShow;
+    return fav.show.id === pickedShow;
   });
-  console.log(favoritesFound);
+
   if (favoritesFound === -1) {
     // añado al array de favoritos
-    favorites.push(pickedShow);
+    favorites.push(objectClickedShow);
   } else {
     // si el findIndex me ha devuelto un número mayor o igual a 0 es que sí está en el array de favoritos
     // quiero sacarlo de array de favoritos
@@ -51,6 +50,7 @@ function handleShows(ev) {
     // y quiero borrar un solo elemento por eso colocamos 1
     favorites.splice(favoritesFound, 1);
   }
+  console.log(favorites);
   paintShows();
 }
 

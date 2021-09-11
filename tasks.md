@@ -12,7 +12,7 @@
   - [x] Escuchar evento sobre CLICK sobre las series
   - [x] Crear una funcion manejadora del evento
   - [x] Identificar la serie clicada
-  - [] Añadir a un array de favorito la serie clicada
+  - [x] Añadir a un array de favorito la serie clicada
   - [] añadir o quitar la clase en el HTML de las series clicadas
 - [] Localstorage
 - [] Filtrar por nombre
