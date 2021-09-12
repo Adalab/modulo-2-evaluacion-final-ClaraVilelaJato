@@ -91,18 +91,6 @@ function listenShows() {
   }
 }
 
-//código para borrar favoritos al clicar el icono
-function listenClickedFavorites() {
-  const liButtonsFavs = document.querySelectorAll('.close-fav');
-
-  for (const liButton of liButtonsFavs) {
-    liButton.addEventListener('click', handleresetFavs);
-  }
-
-  console.log(paintedFavs);
-}
-listenClickedFavorites();
-
 //codigo botón de reset
 
 function handleresetFavs() {
@@ -159,7 +147,7 @@ function paintFavs() {
   paintedFavs.innerHTML = html;
 }
 
-//funcion para añadir una clase a los favoritos que se encuentren el array cunado utilizo paintShows
+//funcion para añadir una clase a los favoritos que se encuentren el array cuando utilizo paintShows
 
 function isFavorite(oneSerie) {
   const favoriteFound = favorites.find((fav) => {
