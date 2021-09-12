@@ -121,7 +121,7 @@ function paintShows() {
     }
     html += `<li id="${oneSerie.id}" class="serie__box js-picked ${favClass}">`;
     html += `<div class="border-show">`;
-    html += `<img src="${image}" alt="${oneSerie.name}">`;
+    html += `<img class="list-image" src="${image}" alt="${oneSerie.name}">`;
     html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
     html += `</div>`;
   }

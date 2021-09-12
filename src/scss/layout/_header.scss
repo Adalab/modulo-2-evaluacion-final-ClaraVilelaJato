@@ -15,7 +15,7 @@
   margin-top: 30px;
   font-family: 'Antonio', sans-serif;
   font-weight: 700;
-  font-size: 2.5em;
+  font-size: 2em;
   color: #f3edec;
   text-transform: uppercase;
 
@@ -31,7 +31,12 @@
   justify-content: flex-end;
   width: 80%;
   text-transform: uppercase;
-  margin: 5px 59px;
+  margin: 5px 46px;
+  font-size: 0.6em;
+  @media (min-width: 768px) {
+    font-size: 1em;
+    margin: 5px 59px;
+  }
 }
 .letter {
   color: #f81707;
