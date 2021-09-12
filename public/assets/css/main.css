@@ -52,7 +52,8 @@
   margin: 5px 0px; }
 
 .letter {
-  color: #f81707; }
+  color: #f81707;
+  font-size: 1.2em; }
 
 .text_under_title1 {
   color: #f3edec; }
@@ -220,5 +221,8 @@ body {
       font-size: 11px;
       text-transform: uppercase;
       border: #f81707 solid 2px; } }
+
+.js-selected-list {
+  box-shadow: rgba(255, 166, 0, 0.514) 0px 0px 10px; }
 
 /*# sourceMappingURL=main.css.map */

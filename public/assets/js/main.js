@@ -113,20 +113,25 @@ function handleresetFavs() {
 
 reset.addEventListener('click', handleresetFavs);
 
-//funcion para pintar los favoritos
-
 //esta funcion la incluimos en la funcion fecth
 function paintShows() {
   let html = '';
+  let favClass = '';
   for (const eachSerie of apiDataShows) {
     const oneSerie = eachSerie.show;
+    const isFav = isFavorite(oneSerie);
+    if (isFav) {
+      favClass = 'js-selected-list';
+    } else {
+      favClass = '';
+    }
     let image = '';
     if (oneSerie.image === null) {
       image = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
     } else {
       image = oneSerie.image.medium;
     }
-    html += `<li id="${oneSerie.id}" class="serie__box js-picked">`;
+    html += `<li id="${oneSerie.id}" class="serie__box js-picked ${favClass}">`;
     html += `<div class="border-show">`;
     html += `<img src="${image}" alt="${oneSerie.name}">`;
     html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
@@ -152,6 +157,19 @@ function paintFavs() {
     html += `<h3 class="fav__name">${favoriteShow.name}</h3></li>`;
   }
   paintedFavs.innerHTML = html;
+}
+
+//funcion para añadir una clase a los favoritos que se encuentren el array cunado utilizo paintShows
+
+function isFavorite(oneSerie) {
+  const favoriteFound = favorites.find((fav) => {
+    return fav.show.id === oneSerie.id;
+  });
+  if (favoriteFound === undefined) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 //# sourceMappingURL=main.js.map
