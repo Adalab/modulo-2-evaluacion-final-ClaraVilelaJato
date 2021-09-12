@@ -27,7 +27,6 @@ function fetchToApi() {
       apiDataShows = data;
     });
   paintShows();
-  setInLocalStorage();
 }
 
 function getLocalStorage() {
@@ -39,11 +38,11 @@ function getLocalStorage() {
     // no tengo datos en el local storage, así que llamo al API
     fetchToApi();
   } else {
-    // sí tengo datos en el local storage, así lo parseo a un array y
+    // sí tengo datos en el local storage,lo parseo a un array y
     const arrayFavorites = JSON.parse(localStorageLoaded);
-    // lo guardo en la variable global de palettes
+    // lo guardo en la variable global de favorites
     favorites = arrayFavorites;
-    // cada vez que modifico los arrays de palettes o de favorites vuelvo a pintar y a escuchar eventos
+
     paintFavs();
   }
 }
@@ -56,7 +55,7 @@ function handleSearch(ev) {
 //Añadimos evento que desencadena la funcion fetch al pulsar el boton, nos traemos los datos del api
 searchButton.addEventListener('click', handleSearch);
 
-// 1- start app -- Cuando carga la pagina
+// 1- -- Cuando carga la pagina
 getLocalStorage();
 
 //Esta función es la encargada de manejar el evento click sobre cada uno de los li
@@ -82,6 +81,7 @@ function handleShows(ev) {
   console.log(favorites);
   paintShows();
   paintFavs();
+  setInLocalStorage();
 }
 
 function listenShows() {
@@ -90,6 +90,28 @@ function listenShows() {
     show.addEventListener('click', handleShows);
   }
 }
+
+//código para borrar favoritos al clicar el icono
+function listenClickedFavorites() {
+  const liButtonsFavs = document.querySelectorAll('.close-fav');
+
+  for (const liButton of liButtonsFavs) {
+    liButton.addEventListener('click', handleresetFavs);
+  }
+
+  console.log(paintedFavs);
+}
+listenClickedFavorites();
+
+//codigo botón de reset
+
+function handleresetFavs() {
+  favorites = [];
+  paintedFavs.innerHTML = '';
+  localStorage.clear();
+}
+
+reset.addEventListener('click', handleresetFavs);
 
 //funcion para pintar los favoritos
 
@@ -125,7 +147,7 @@ function paintFavs() {
     } else {
       image = favoriteShow.image.medium;
     }
-    html += `<li id="${favoriteShow.id}" class="fav__card">`;
+    html += `<button value="x" class="close-fav">x</button><li id="${favoriteShow.id}" class="fav__card">`;
     html += `<img class="fav__image" src="${image}" alt="${favoriteShow.name}">`;
     html += `<h3 class="fav__name">${favoriteShow.name}</h3></li>`;
   }

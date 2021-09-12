@@ -1,0 +1,16 @@
+.footer {
+  height: 10%;
+  display: flex;
+  &__container {
+    width: 100%;
+    background-image: url('/assets/images/images (1).jpeg');
+    height: 100%;
+    text-align: center;
+  }
+  &__small {
+    color: white;
+    font-weight: 900;
+    font-family: 'Antonio', sans-serif;
+    margin: 5px 0px;
+  }
+}
