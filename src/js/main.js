@@ -84,6 +84,27 @@ function handleShows(ev) {
   setInLocalStorage();
 }
 
+function handleX(ev) {
+  const showToClose = parseInt(ev.currentTarget.id);
+  const favoritesFound = favorites.findIndex((fav) => {
+    return fav.show.id === showToClose;
+  });
+  if (favoritesFound === -1) {
+    favorites.splice(favoritesFound, 1);
+  }
+  paintFavs();
+  paintShows();
+  setInLocalStorage();
+}
+
+function closeX() {
+  const listX = document.querySelectorAll('.close-fav');
+  for (let x of listX) {
+    x.addEventListener('click', handleX);
+    console.log(listX);
+  }
+}
+
 function listenShows() {
   const showList = document.querySelectorAll('.js-picked'); //le doy clase a los li que cree con la funcion paint
   for (const show of showList) {
@@ -144,7 +165,9 @@ function paintFavs() {
     html += `<img class="fav__image" src="${image}" alt="${favoriteShow.name}">`;
     html += `<h3 class="fav__name">${favoriteShow.name}</h3></li>`;
   }
+
   paintedFavs.innerHTML = html;
+  closeX();
 }
 
 //funcion para añadir una clase a los favoritos que se encuentren el array cuando utilizo paintShows
