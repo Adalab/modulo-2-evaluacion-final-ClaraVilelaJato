@@ -97,12 +97,13 @@ function listenShows() {
 //Declaro una función para manejar el evento click sobre las X del listado de favoritos
 //el funcionamiento es muy similar al de la función handleShows, usando el metodo findIndex para saber si en el array está el elemento que tenga el mismo id que el elemento que estamos escuchando cen el evento click.
 function handleX(ev) {
-  const showToClose = parseInt(ev.currentTarget.id);
+  const showToClose = parseInt(ev.currentTarget.parentElement.childNodes[1].id);
   const favoritesFound = favorites.findIndex((fav) => {
     return fav.show.id === showToClose;
   });
-  if (favoritesFound === -1) {
-    //lo añado, y lo quito
+  if (favoritesFound === 0) {
+    // y lo quito
+    console.log(favoritesFound);
     favorites.splice(favoritesFound, 1);
   }
   paintFavs();
