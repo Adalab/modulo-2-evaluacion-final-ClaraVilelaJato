@@ -189,14 +189,14 @@ body {
   border-radius: 50%;
   padding: 1px 1px 1px 1px;
   border: #f81707 solid 1px;
-  background-color: white;
+  background-color: #f81707;
   width: 15px;
   height: 15px;
   /* text-align: left; */
   box-shadow: rgba(0, 0, 0, 0.637) 0px 2px 3px;
   font-weight: bolder;
   font-size: 10px;
-  color: #f81707;
+  color: white;
   cursor: pointer;
   @media (min-width: 768px) {
     width: 23px;
