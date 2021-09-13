@@ -18,8 +18,9 @@ function fetchToApi() {
     .then((response) => response.json())
     .then((data) => {
       apiDataShows = data; //guardo los datos del api en el array global
+      paintShows();
     });
-  paintShows(); //incluyo la funcion painShows para que se me pinten los datos en cada petición
+  //incluyo la funcion painShows para que se me pinten los datos en cada petición
 }
 
 //Declaro la función para guardar en localStorage
@@ -101,7 +102,7 @@ function handleX(ev) {
   const favoritesFound = favorites.findIndex((fav) => {
     return fav.show.id === showToClose;
   });
-  if (favoritesFound === -1) {
+  if (favoritesFound !== -1) {
     // y lo quito
     favorites.splice(favoritesFound, 1);
   }
@@ -167,7 +168,7 @@ function paintFavs() {
     } else {
       image = favoriteShow.image.medium;
     }
-    html += `<button value="x" class="close-fav">x</button><li id="${favoriteShow.id}" class="fav__card">`;
+    html += `<button value="x" id=${favoriteShow.id} class="close-fav">x</button><li id="${favoriteShow.id}" class="fav__card">`;
     html += `<img class="fav__image" src="${image}" alt="${favoriteShow.name}">`;
     html += `<h3 class="fav__name">${favoriteShow.name}</h3></li>`;
   }
