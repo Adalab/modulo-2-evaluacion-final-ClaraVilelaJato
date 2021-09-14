@@ -71,8 +71,8 @@ function handleShows(ev) {
   const favoritesFound = favorites.findIndex((fav) => {
     return fav.show.id === pickedShow;
   });
-
-  if (favoritesFound === -1) {
+  console.log(objectClickedShow.show.name);
+  /*   if (favoritesFound === -1) {
     // añado al array de favoritos
     favorites.push(objectClickedShow);
   } else {
@@ -85,12 +85,16 @@ function handleShows(ev) {
   //console.log(favorites);
   paintShows();
   paintFavs();
-  setInLocalStorage();
+  setInLocalStorage(); */
 }
 
 function listenShows() {
   const showList = document.querySelectorAll('.js-picked'); //selecciono los li que creé con la funcion paintShows, a continuación los recorro con un bucle y añado el tipo de evento y la función manejadora cuando el evento se desencadene.
+  /* for (const show of showList) {
+    show.addEventListener('click', handleShows);
+  } */
   for (const show of showList) {
+    console.log(favorites);
     show.addEventListener('click', handleShows);
   }
 }
@@ -135,6 +139,12 @@ function paintShows() {
   let favClass = '';
   for (const eachSerie of apiDataShows) {
     const oneSerie = eachSerie.show;
+    const AllGenres = eachSerie.show.genres;
+    let Genre = eachSerie.show.genres.genre;
+    let htmlGenre = '';
+    for (const Genre of AllGenres) {
+      htmlGenre += `<li>${Genre}</li>`;
+    }
     const isFav = isFavorite(oneSerie); //guardo esta funcion (declarada en la linea 181) con oneSerie como parámetro dentro de la constante isfav. Si es true añado la clase, si no vacio, para usarla al pintar los li y darle un css diferente.
     if (isFav) {
       favClass = 'js-selected-list';
@@ -150,6 +160,7 @@ function paintShows() {
     html += `<li id="${oneSerie.id}" class="serie__box js-picked ${favClass}">`;
     html += `<div class="border-show">`;
     html += `<img class="list-image" src="${image}" alt="${oneSerie.name}">`;
+    html += `<h3 class="genre">${htmlGenre}</h3>`;
     html += `<h3 class="serie__name">${oneSerie.name}</h3></li>`;
     html += `</div>`;
   }
